@@ -51,8 +51,16 @@
       justify-content: center;
       align-items: center;
     }
-    .swiper-slide img {
+    /* Taille des images PLANTS */
+    .mySwiperPlants .swiper-slide img {
       width: 250px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    /* Taille plus grande pour les IN-GAME */
+    .mySwiperGame .swiper-slide img {
+      width: 350px; /* agrandies */
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
@@ -77,6 +85,14 @@
     #home > * {
       position: relative;
       z-index: 2;
+    }
+    /* Séparation floue */
+    .section-separator {
+      height: 60px;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
@@ -106,6 +122,9 @@
     Play Now
   </a>
 </section>
+
+<!-- Séparation -->
+<div class="section-separator"></div>
 
 <!-- Features Section -->
 <section id="features" class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8">
