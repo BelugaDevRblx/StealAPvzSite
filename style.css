@@ -1,0 +1,90 @@
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  overflow-x: hidden;
+}
+.neon-text {
+  text-shadow: 0 0 5px #00ffe1, 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+}
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mouse-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0, 255, 225, 0.3) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+@media (pointer: coarse) {
+  .mouse-glow {
+    display: none;
+  }
+}
+
+/* Hero section */
+.hero-section {
+  min-height: 88vh;
+  padding-top: 6rem;
+  text-align: center;
+}
+.hero-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.play-button {
+  background: #22d3ee;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Countdown */
+.countdown {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.cd-box {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+.cd-num {
+  font-size: 28px;
+  font-weight: bold;
+}
+.cd-unit {
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-panel {
+  background: #0b1220;
+  padding: 1rem;
+  border-radius: 12px;
+}
+.badge {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
