@@ -31,10 +31,8 @@
     }
     .mouse-glow {
       position: fixed;
-      top: 0; 
-      left: 0;
-      width: 200px;
-      height: 200px;
+      top: 0; left: 0;
+      width: 200px; height: 200px;
       border-radius: 50%;
       pointer-events: none;
       background: radial-gradient(circle, rgba(0,255,225,0.3) 0%, transparent 70%);
@@ -43,56 +41,87 @@
       z-index: 9999;
     }
     /* Swiper styling */
-    .swiper {
-      padding-bottom: 50px;
-    }
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    /* Taille des images PLANTS */
+    .swiper { padding-bottom: 50px; }
+    .swiper-slide { display: flex; justify-content: center; align-items: center; }
+    /* Plants smaller */
     .mySwiperPlants .swiper-slide img {
-      width: 250px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      width: 250px; height: auto;
+      border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    /* Taille plus grande pour les IN-GAME */
+    /* In-game larger */
     .mySwiperGame .swiper-slide img {
-      width: 700px; /* agrandies */
-      height: auto;
-      border-radius:22px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      width: 700px; height: auto; /* tu peux monter à 420/480 si tu veux plus grand */
+      border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .swiper-button-next, .swiper-button-prev {
       color: white;
-      transform: translateY(-30px);
+      transform: translateY(-30px); /* rapproche des images */
     }
+
     /* Hero background */
-    #home {
-      background: url("images/Sith.png") center/cover no-repeat;
-      position: relative;
-    }
-    /* Dark overlay on background */
+    #home { background: url("images/Sith.png") center/cover no-repeat; position: relative; }
     #home::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
+      content: ""; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 1;
     }
-    #home > * {
-      position: relative;
-      z-index: 2;
-    }
-    /* Séparation floue */
+    #home > * { position: relative; z-index: 2; }
+
+    /* Separator blur between home and features */
     .section-separator {
-      height: 60px;
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      height: 60px; background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Countdown styles */
+    .countdown-wrap {
+      margin-top: 18px;
+    }
+    .countdown-label {
+      font-weight: 700; letter-spacing: .1em;
+      color: #a5f3fc; text-transform: uppercase;
+    }
+    .countdown {
+      display: flex; gap: 12px; justify-content: center; margin-top: 10px;
+    }
+    .cd-box {
+      min-width: 90px;
+      padding: 14px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 0 25px rgba(0,255,225,0.08), 0 10px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+    }
+    .cd-num {
+      font-size: 40px; line-height: 1; font-weight: 800;
+      text-shadow: 0 0 12px rgba(0,255,225,0.6);
+    }
+    .cd-unit {
+      font-size: 12px; color: #cbd5e1; letter-spacing: .08em;
+    }
+    .countdown-hint {
+      margin-top: 10px; font-size: 13px; color: #94a3b8;
+    }
+    .pulse {
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: inset 0 0 25px rgba(0,255,225,0.10), 0 0 20px rgba(0,255,225,0.15); }
+      50%     { box-shadow: inset 0 0 35px rgba(0,255,225,0.25), 0 0 35px rgba(0,255,225,0.35); }
+    }
+    .release-now {
+      font-size: 44px; font-weight: 900;
+      color: #22d3ee;
+      text-shadow: 0 0 14px rgba(34,211,238,0.8), 0 0 30px rgba(0,255,225,0.55);
+      margin-top: 12px;
+      animation: pop 900ms ease forwards;
+    }
+    @keyframes pop {
+      0% { transform: scale(.85); opacity: .2; }
+      60% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
@@ -118,12 +147,25 @@
   <p class="max-w-2xl text-lg text-gray-300 mb-8">
     Enter a Steal a Brainrot type universe but Plant Vs Zombie version.
   </p>
-  <a href="#play" class="bg-cyan-400 text-black px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-cyan-300 transition">
+  <a href="https://www.roblox.com/fr/games/71388334059280/Steal-A-PvZ" target="_blank" class="bg-cyan-400 text-black px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-cyan-300 transition">
     Play Now
   </a>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-wrap">
+    <div class="countdown-label">Game Release</div>
+    <div id="countdown" class="countdown">
+      <div class="cd-box pulse"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">DAYS</div></div>
+      <div class="cd-box pulse"><div class="cd-num" id="cd-hours">--</div><div class="cd-unit">HOURS</div></div>
+      <div class="cd-box pulse"><div class="cd-num" id="cd-mins">--</div><div class="cd-unit">MINS</div></div>
+      <div class="cd-box pulse"><div class="cd-num" id="cd-secs">--</div><div class="cd-unit">SECS</div></div>
+    </div>
+    <div id="countdown-hint" class="countdown-hint"></div>
+    <div id="release-now" class="release-now" style="display:none;">RELEASE NOW! 🎉</div>
+  </div>
 </section>
 
-<!-- Séparation -->
+<!-- Separator -->
 <div class="section-separator"></div>
 
 <!-- Features Section -->
@@ -152,17 +194,17 @@
   <div class="swiper mySwiperPlants max-w-4xl mx-auto">
     <div class="swiper-wrapper">
       <!-- 11 plants -->
-      <div class="swiper-slide"><img src="images/plant1.png"></div>
-      <div class="swiper-slide"><img src="images/plant2.png"></div>
-      <div class="swiper-slide"><img src="images/plant3.png"></div>
-      <div class="swiper-slide"><img src="images/plant4.png"></div>
-      <div class="swiper-slide"><img src="images/plant5.png"></div>
-      <div class="swiper-slide"><img src="images/plant6.png"></div>
-      <div class="swiper-slide"><img src="images/plant7.png"></div>
-      <div class="swiper-slide"><img src="images/plant8.png"></div>
-      <div class="swiper-slide"><img src="images/plant9.png"></div>
-      <div class="swiper-slide"><img src="images/plant10.png"></div>
-      <div class="swiper-slide"><img src="images/plant11.png"></div>
+      <div class="swiper-slide"><img src="images/plant1.png" alt="Plant 1"></div>
+      <div class="swiper-slide"><img src="images/plant2.png" alt="Plant 2"></div>
+      <div class="swiper-slide"><img src="images/plant3.png" alt="Plant 3"></div>
+      <div class="swiper-slide"><img src="images/plant4.png" alt="Plant 4"></div>
+      <div class="swiper-slide"><img src="images/plant5.png" alt="Plant 5"></div>
+      <div class="swiper-slide"><img src="images/plant6.png" alt="Plant 6"></div>
+      <div class="swiper-slide"><img src="images/plant7.png" alt="Plant 7"></div>
+      <div class="swiper-slide"><img src="images/plant8.png" alt="Plant 8"></div>
+      <div class="swiper-slide"><img src="images/plant9.png" alt="Plant 9"></div>
+      <div class="swiper-slide"><img src="images/plant10.png" alt="Plant 10"></div>
+      <div class="swiper-slide"><img src="images/plant11.png" alt="Plant 11"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -173,12 +215,12 @@
   <div class="swiper mySwiperGame max-w-4xl mx-auto">
     <div class="swiper-wrapper">
       <!-- 6 screenshots -->
-      <div class="swiper-slide"><img src="images/screen1.png"></div>
-      <div class="swiper-slide"><img src="images/screen2.png"></div>
-      <div class="swiper-slide"><img src="images/screen3.png"></div>
-      <div class="swiper-slide"><img src="images/screen4.png"></div>
-      <div class="swiper-slide"><img src="images/screen5.png"></div>
-      <div class="swiper-slide"><img src="images/screen6.png"></div>
+      <div class="swiper-slide"><img src="images/screen1.png" alt="Screenshot 1"></div>
+      <div class="swiper-slide"><img src="images/screen2.png" alt="Screenshot 2"></div>
+      <div class="swiper-slide"><img src="images/screen3.png" alt="Screenshot 3"></div>
+      <div class="swiper-slide"><img src="images/screen4.png" alt="Screenshot 4"></div>
+      <div class="swiper-slide"><img src="images/screen5.png" alt="Screenshot 5"></div>
+      <div class="swiper-slide"><img src="images/screen6.png" alt="Screenshot 6"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -213,11 +255,9 @@
   // Init AOS animations
   AOS.init({ duration: 1000, once: true });
 
-  // Swiper Plants
-  var swiperPlants = new Swiper(".mySwiperPlants", {
-    loop: true,
-    spaceBetween: 20,
-    centeredSlides: true,
+  // Swipers
+  new Swiper(".mySwiperPlants", {
+    loop: true, spaceBetween: 20, centeredSlides: true,
     autoplay: { delay: 2500, disableOnInteraction: false },
     pagination: { el: ".mySwiperPlants .swiper-pagination", clickable: true },
     navigation: {
@@ -225,12 +265,8 @@
       prevEl: ".mySwiperPlants .swiper-button-prev",
     },
   });
-
-  // Swiper Game
-  var swiperGame = new Swiper(".mySwiperGame", {
-    loop: true,
-    spaceBetween: 20,
-    centeredSlides: true,
+  new Swiper(".mySwiperGame", {
+    loop: true, spaceBetween: 20, centeredSlides: true,
     autoplay: { delay: 3000, disableOnInteraction: false },
     pagination: { el: ".mySwiperGame .swiper-pagination", clickable: true },
     navigation: {
@@ -238,6 +274,52 @@
       prevEl: ".mySwiperGame .swiper-button-prev",
     },
   });
+
+  // ===== Countdown (Release 15/08/2025 19:00 Europe/Paris) =====
+  // Paris in August is UTC+02:00 (CEST). We encode it explicitly to be unambiguous.
+  const targetParis = new Date('2025-08-15T19:00:00+02:00').getTime();
+
+  const cdDays  = document.getElementById('cd-days');
+  const cdHours = document.getElementById('cd-hours');
+  const cdMins  = document.getElementById('cd-mins');
+  const cdSecs  = document.getElementById('cd-secs');
+  const cdWrap  = document.getElementById('countdown');
+  const cdHint  = document.getElementById('countdown-hint');
+  const relNow  = document.getElementById('release-now');
+
+  // Show both Paris time & user's local equivalent
+  const parisFmt = new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris'
+  });
+  const localFmt = new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'full', timeStyle: 'short'
+  });
+  cdHint.textContent = `Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)}`;
+
+  function updateCountdown() {
+    const now = Date.now();
+    let diff = targetParis - now;
+
+    if (diff <= 0) {
+      // Release!
+      cdWrap.style.display = 'none';
+      cdHint.style.display = 'none';
+      relNow.style.display = 'block';
+      return;
+    }
+    const sec = Math.floor(diff / 1000);
+    const d = Math.floor(sec / 86400);
+    const h = Math.floor((sec % 86400) / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+
+    cdDays.textContent  = String(d);
+    cdHours.textContent = h.toString().padStart(2,'0');
+    cdMins.textContent  = m.toString().padStart(2,'0');
+    cdSecs.textContent  = s.toString().padStart(2,'0');
+  }
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
