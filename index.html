@@ -4,33 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steal a PvZ</title>
-  
+
   <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- AOS Animations -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- Open Graph / Twitter (Discord preview) -->
   <meta property="og:title" content="Steal a PvZ - Official Site" />
-  <meta property="og:description" content="Enter a Steal a Brainrot type universe but Plant Vs Zombie version" />
-  <meta property="og:image" content="https://i.imgur.com/atOMzHA.png" />
+  <meta property="og:description" content="Enter a Steal a Brainrot type universe but Plants Vs Zombies version" />
+  <meta property="og:image" content="https://i.imgur.com/6Me9mxf_d.webp?maxwidth=760&fidelity=grand" />
   <meta property="og:url" content="https://stealapvzsite.up.railway.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Steal a PvZ" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Steal a PvZ - Official Site" />
-  <meta name="twitter:description" content="Enter a Steal a Brainrot type universe but Plant Vs Zombie version" />
+  <meta name="twitter:description" content="Enter a Steal a Brainrot type universe but Plants Vs Zombies version" />
   <meta name="twitter:image" content="https://i.imgur.com/nAZBfup_d.webp?maxwidth=760&fidelity=grand" />
 
   <!-- (Optionnel) favicon -->
-  <link rel="icon" type="image/png" href="images/plant1.png">
-  <link rel="apple-touch-icon" href="images/plant1.png">
+  <link rel="icon" type="image/png" href="images/plant1.png" />
+  <link rel="apple-touch-icon" href="images/plant1.png" />
 
-  <!-- Custom Styles -->
   <style>
     body { background: radial-gradient(circle at top, #0f172a, #020617); overflow-x: hidden; }
     .neon-text { text-shadow: 0 0 5px #00ffe1, 0 0 10px #00ffe1, 0 0 20px #00ffe1; }
@@ -61,12 +61,16 @@
     .cd-unit { font-size: 12px; color: #cbd5e1; letter-spacing: .08em; }
     .countdown-hint { margin-top: 10px; font-size: 13px; color: #94a3b8; }
     .pulse { animation: pulseGlow 1.8s ease-in-out infinite; }
-    @keyframes pulseGlow { 0%,100% { box-shadow: inset 0 0 25px rgba(0,255,225,0.10), 0 0 20px rgba(0,255,225,0.15); } 50% { box-shadow: inset 0 0 35px rgba(0,255,225,0.25), 0 0 35px rgba(0,255,225,0.35); } }
+    @keyframes pulseGlow { 0%,100% { box-shadow: inset 0 0 25px rgba(0,255,225,0.10), 0 0 20px rgba(0,255,225,0.15);} 50% { box-shadow: inset 0 0 35px rgba(0,255,225,0.25), 0 0 35px rgba(0,255,225,0.35);} }
     .release-now { font-size: 44px; font-weight: 900; color: #22d3ee; text-shadow: 0 0 14px rgba(34,211,238,0.8), 0 0 30px rgba(0,255,225,0.55); margin-top: 12px; animation: pop 900ms ease forwards; }
     @keyframes pop { 0% { transform: scale(.85); opacity: .2; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
-
-    /* Reveal animation for the Play button */
     .reveal-pop { animation: pop 800ms ease forwards; }
+
+    /* UPDATE LOGS modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(2,6,23,0.7); backdrop-filter: blur(6px); display: none; z-index: 50; }
+    .modal-panel { max-height: 90vh; overflow: auto; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:9999px; background:#111827; color:#e5e7eb; font-size:12px; border:1px solid rgba(255,255,255,0.08); }
+    .card { background:#0b1220; border:1px solid rgba(255,255,255,0.08); border-radius:18px; overflow:hidden; }
   </style>
 </head>
 <body class="text-white font-sans">
@@ -83,6 +87,10 @@
     <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
     <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
   </nav>
+  <!-- Update Logs button in header -->
+  <button id="openLogs" class="ml-4 px-4 py-2 rounded-full bg-amber-400 text-black font-semibold hover:bg-amber-300 transition">
+    Update Logs
+  </button>
 </header>
 
 <!-- Hero Section -->
@@ -129,7 +137,7 @@
   </div>
   <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
     🔫 <h3 class="text-xl font-semibold mb-2">Gears</h3>
-    <p>Use your gears to expel the thieves from your base! and be protected of course :></p>
+    <p>Use your gears to expel the thieves from your base, and be protected of course :></p>
   </div>
   <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
     💰 <h3 class="text-xl font-semibold mb-2">Rebirth</h3>
@@ -191,17 +199,71 @@
   © 2025 Steal a PvZ | Game Made with ❤️ by Steal a Pvz Studio and Site made by @v222.v333 on dc.
 </footer>
 
+<!-- ========== UPDATE LOGS MODAL ========== -->
+<div id="logsModal" class="modal-backdrop">
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <div class="card modal-panel p-4 md:p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-2xl font-extrabold">Update Logs</h3>
+        <button id="closeLogs" class="rounded-full px-3 py-1 bg-slate-800 hover:bg-slate-700 border border-white/10">Close</button>
+      </div>
+
+      <!-- UPDATE LOGS CONTENT -->
+      <div class="mt-6 space-y-8">
+        <!-- Log Item -->
+        <article class="grid md:grid-cols-3 gap-6 items-start">
+          <div class="md:col-span-2 card">
+            <img src="images/screen1.png" alt="update cover" class="w-full object-cover">
+          </div>
+          <div>
+            <div class="badge mb-2">Steal a PvZ</div>
+            <a class="block text-3xl font-extrabold text-amber-300 underline decoration-2 underline-offset-4">???</a>
+            <div class="text-sm text-slate-400 mt-2">???, 2025</div>
+
+            <h4 class="text-2xl font-bold mt-6 text-amber-300">???</h4>
+            <ul class="mt-2 space-y-1 text-slate-200">
+              <li>More detail coming soon.</li>
+              <li>???</li>
+              <li>???</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Another Log Item -->
+        <article class="grid md:grid-cols-3 gap-6 items-start">
+          <div class="md:col-span-2 card">
+            <img src="images/screen2.png" alt="update cover" class="w-full object-cover">
+          </div>
+          <div>
+            <div class="badge mb-2">Dev Blog</div>
+            <a class="block text-3xl font-extrabold text-cyan-300 underline decoration-2 underline-offset-4">???</a>
+            <div class="text-sm text-slate-400 mt-2">??? , 2025</div>
+
+            <h4 class="text-2xl font-bold mt-6 text-cyan-300">Changes</h4>
+            <ul class="mt-2 space-y-1 text-slate-200">
+              <li>???</li>
+              <li>???</li>
+              <li>???</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <!-- /content -->
+    </div>
+  </div>
+</div>
+
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  // Mouse glow effect
+  // Mouse glow
   const glow = document.getElementById("mouseGlow");
   document.addEventListener("mousemove", (e) => {
-    glow.style.left = `${e.clientX}px`;
-    glow.style.top = `${e.clientY}px`;
+      glow.style.left = `${e.clientX}px`;
+      glow.style.top  = `${e.clientY}px`;
   });
 
-  // Init AOS animations
+  // AOS
   AOS.init({ duration: 1000, once: true });
 
   // Swipers
@@ -220,7 +282,6 @@
 
   // ===== Countdown (Release 15/08/2025 19:00 Europe/Paris) =====
   const targetParis = new Date('2025-08-15T19:00:00+02:00').getTime();
-
   const cdDays  = document.getElementById('cd-days');
   const cdHours = document.getElementById('cd-hours');
   const cdMins  = document.getElementById('cd-mins');
@@ -230,7 +291,6 @@
   const relNow  = document.getElementById('release-now');
   const playBtn = document.getElementById('playBtn');
 
-  // Show both Paris time & user's local equivalent
   const parisFmt = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' });
   const localFmt = new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' });
   cdHint.textContent = `Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)}`;
@@ -239,38 +299,37 @@
     cdWrap.style.display = 'none';
     cdHint.style.display = 'none';
     relNow.style.display = 'block';
-    // Reveal Play button with animation
     playBtn.style.display = 'inline-block';
     playBtn.classList.add('reveal-pop');
   }
-
   function updateCountdown() {
-    const now = Date.now();
-    let diff = targetParis - now;
-
-    if (diff <= 0) {
-      showRelease();
-      clearInterval(timer);
-      return;
-    }
+    const diff = targetParis - Date.now();
+    if (diff <= 0) { showRelease(); clearInterval(timer); return; }
     const sec = Math.floor(diff / 1000);
     const d = Math.floor(sec / 86400);
     const h = Math.floor((sec % 86400) / 3600);
     const m = Math.floor((sec % 3600) / 60);
     const s = sec % 60;
-
     cdDays.textContent  = String(d);
     cdHours.textContent = h.toString().padStart(2,'0');
     cdMins.textContent  = m.toString().padStart(2,'0');
     cdSecs.textContent  = s.toString().padStart(2,'0');
   }
-
-  // First render
   updateCountdown();
   const timer = setInterval(updateCountdown, 1000);
-
-  // If someone opens the page after release, ensure button shows right away
   if (Date.now() >= targetParis) showRelease();
+
+  // ===== Update Logs Modal logic =====
+  const modal = document.getElementById('logsModal');
+  const openLogs = document.getElementById('openLogs');
+  const closeLogs = document.getElementById('closeLogs');
+
+  function openModal(){ modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+  function closeModal(){ modal.style.display = 'none'; document.body.style.overflow = ''; }
+
+  openLogs.addEventListener('click', openModal);
+  closeLogs.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); }); // click backdrop to close
 </script>
 </body>
 </html>
