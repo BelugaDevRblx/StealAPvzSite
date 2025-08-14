@@ -51,10 +51,14 @@
       align-items: center;
     }
     .swiper-slide img {
-      width: 250px; /* taille réduite */
+      width: 250px; /* Taille réduite */
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: white;
+      transform: translateY(-30px); /* rapproche des images */
     }
   </style>
 </head>
@@ -110,9 +114,17 @@
   <h2 class="text-3xl font-bold text-center mb-10">Plants Gallery</h2>
   <div class="swiper mySwiperPlants max-w-4xl mx-auto">
     <div class="swiper-wrapper">
+      <!-- Affiche plant1 à plant10 -->
       <div class="swiper-slide"><img src="images/plant1.png" alt="Plant 1"></div>
       <div class="swiper-slide"><img src="images/plant2.png" alt="Plant 2"></div>
       <div class="swiper-slide"><img src="images/plant3.png" alt="Plant 3"></div>
+      <div class="swiper-slide"><img src="images/plant4.png" alt="Plant 4"></div>
+      <div class="swiper-slide"><img src="images/plant5.png" alt="Plant 5"></div>
+      <div class="swiper-slide"><img src="images/plant6.png" alt="Plant 6"></div>
+      <div class="swiper-slide"><img src="images/plant7.png" alt="Plant 7"></div>
+      <div class="swiper-slide"><img src="images/plant8.png" alt="Plant 8"></div>
+      <div class="swiper-slide"><img src="images/plant9.png" alt="Plant 9"></div>
+      <div class="swiper-slide"><img src="images/plant10.png" alt="Plant 10"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -122,9 +134,17 @@
   <h2 class="text-3xl font-bold text-center mt-16 mb-10">In-Game Screenshots</h2>
   <div class="swiper mySwiperGame max-w-4xl mx-auto">
     <div class="swiper-wrapper">
+      <!-- Affiche screen1 à screen10 -->
       <div class="swiper-slide"><img src="images/screen1.png" alt="Screenshot 1"></div>
       <div class="swiper-slide"><img src="images/screen2.png" alt="Screenshot 2"></div>
       <div class="swiper-slide"><img src="images/screen3.png" alt="Screenshot 3"></div>
+      <div class="swiper-slide"><img src="images/screen4.png" alt="Screenshot 4"></div>
+      <div class="swiper-slide"><img src="images/screen5.png" alt="Screenshot 5"></div>
+      <div class="swiper-slide"><img src="images/screen6.png" alt="Screenshot 6"></div>
+      <div class="swiper-slide"><img src="images/screen7.png" alt="Screenshot 7"></div>
+      <div class="swiper-slide"><img src="images/screen8.png" alt="Screenshot 8"></div>
+      <div class="swiper-slide"><img src="images/screen9.png" alt="Screenshot 9"></div>
+      <div class="swiper-slide"><img src="images/screen10.png" alt="Screenshot 10"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
