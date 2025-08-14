@@ -12,39 +12,45 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <!-- Custom Styles -->
   <style>
-    /* Background */
     body {
       background: radial-gradient(circle at top, #0f172a, #020617);
       overflow-x: hidden;
     }
-
-    /* Neon effect */
     .neon-text {
       text-shadow: 0 0 5px #00ffe1, 0 0 10px #00ffe1, 0 0 20px #00ffe1;
     }
-
-    /* Glass effect */
     .glass {
       backdrop-filter: blur(10px);
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    /* Mouse glow effect */
     .mouse-glow {
       position: fixed;
       top: 0; 
       left: 0;
-      width: 200px; /* taille du halo */
+      width: 200px;
       height: 200px;
       border-radius: 50%;
       pointer-events: none;
       background: radial-gradient(circle, rgba(0,255,225,0.3) 0%, transparent 70%);
-          mix-blend-mode: screen;
+      mix-blend-mode: screen;
       transform: translate(-50%, -50%);
       z-index: 9999;
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,255,225,0.3);
     }
   </style>
 </head>
@@ -66,9 +72,9 @@
 
 <!-- Hero Section -->
 <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-6" data-aos="fade-up">
-  <h2 class="text-5xl md:text-6xl font-bold mb-4 neon-text">Steal a Plants Website view for Muxx</h2>
+  <h2 class="text-5xl md:text-6xl font-bold mb-4 neon-text">Build, Steal & Conquer</h2>
   <p class="max-w-2xl text-lg text-gray-300 mb-8">
-    Enter a Steal a Brainrot type universe but Plant Vs Zombie version.
+    Enter the ultimate battle between plants and zombies in a futuristic strategy world.
   </p>
   <a href="#play" class="bg-cyan-400 text-black px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-cyan-300 transition">
     Play Now
@@ -76,32 +82,49 @@
 </section>
 
 <!-- Features Section -->
-<section id="features" class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+<section id="features" class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8">
   <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in">
-    🌱 <h3 class="text-xl font-semibold mb-2">Manage Your Plant</h3>
-    <p>Collect plants and avoid having them stolen.</p>
+    🌱 <h3 class="text-xl font-semibold mb-2">Manage Your Plants</h3>
+    <p>Collect plants and defend them from thieves.</p>
   </div>
   <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
     🥷 <h3 class="text-xl font-semibold mb-2">Steal Plants</h3>
-    <p>Steal your enemy's plants solo or with the help of your friends!</p>
+    <p>Infiltrate rival bases to steal their best plants!</p>
   </div>
   <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
     🔫 <h3 class="text-xl font-semibold mb-2">Gears</h3>
-    <p>Use your gears to expel the thieves from your base! and be protected of course :></p>
+    <p>Equip powerful tools to protect your base from attacks.</p>
   </div>
-  <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
+  <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
     💰 <h3 class="text-xl font-semibold mb-2">Rebirth</h3>
-    <p>Rebirth to upgrade your base and unlock new gears.</p>
+    <p>Rebuild stronger and unlock special upgrades.</p>
   </div>
 </section>
 
 <!-- Gallery Section -->
 <section id="gallery" class="py-20 bg-gray-900">
-  <h2 class="text-3xl font-bold text-center mb-10">Game Gallery</h2>
-  <div class="flex flex-wrap justify-center gap-6 px-6">
-    <img src="images/img1.png" alt="Screenshot 1" class="w-72 rounded-lg hover:scale-110 transition" data-aos="fade-up">
-    <img src="images/img2.png" alt="Screenshot 2" class="w-72 rounded-lg hover:scale-110 transition" data-aos="fade-up" data-aos-delay="100">
-    <img src="images/img3.png" alt="Screenshot 3" class="w-72 rounded-lg hover:scale-110 transition" data-aos="fade-up" data-aos-delay="200">
+  <h2 class="text-3xl font-bold text-center mb-10 neon-text">Plants Gallery</h2>
+  <div class="swiper mySwiperPlants max-w-4xl mx-auto">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/plant1.png" alt="Plant 1"></div>
+      <div class="swiper-slide"><img src="images/plant2.png" alt="Plant 2"></div>
+      <div class="swiper-slide"><img src="images/plant3.png" alt="Plant 3"></div>
+    </div>
+    <div class="swiper-button-next text-white"></div>
+    <div class="swiper-button-prev text-white"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <h2 class="text-3xl font-bold text-center mt-16 mb-10 neon-text">In-Game Screenshots</h2>
+  <div class="swiper mySwiperGame max-w-4xl mx-auto">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/img1.png" alt="Game 1"></div>
+      <div class="swiper-slide"><img src="images/img2.png" alt="Game 2"></div>
+      <div class="swiper-slide"><img src="images/img3.png" alt="Game 3"></div>
+    </div>
+    <div class="swiper-button-next text-white"></div>
+    <div class="swiper-button-prev text-white"></div>
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
@@ -109,29 +132,46 @@
 <section id="contact" class="py-20 text-center px-6">
   <h2 class="text-3xl font-bold mb-6 neon-text">Join the Community</h2>
   <p class="text-gray-300 mb-6">Stay updated with the latest events and news.</p>
-  <a href="https://discord.gg/g4Cz9wKrSE" target="_blank" class="bg-cyan-400 text-black px-6 py-3 rounded-full font-bold hover:bg-cyan-300 transition">
+  <a href="https://discord.gg/" target="_blank" class="bg-cyan-400 text-black px-6 py-3 rounded-full font-bold hover:bg-cyan-300 transition">
     Join Discord
   </a>
 </section>
 
 <!-- Footer -->
 <footer class="py-6 text-center text-sm glass">
-  © 2025 Steal a PvZ | Game Made with ❤️ by Steal a Pvz Studio and Site made by @v222.v333 on dc.
+  © 2025 Steal a PvZ | Made with ❤️ by Steal a PvZ Studio
 </footer>
 
 <!-- Scripts -->
 <script>
   // Mouse glow effect
   const glow = document.getElementById("mouseGlow");
-    document.addEventListener("mousemove", (e) => {
-      glow.style.left = `${e.clientX}px`;
-      glow.style.top = `${e.clientY}px`;
-    });
+  document.addEventListener("mousemove", (e) => {
+    glow.style.left = `${e.clientX}px`;
+    glow.style.top = `${e.clientY}px`;
+  });
 
   // Init AOS animations
-  AOS.init({
-    duration: 1000,
-    once: true
+  AOS.init({ duration: 1000, once: true });
+
+  // Swiper Plants
+  new Swiper(".mySwiperPlants", {
+    loop: true,
+    spaceBetween: 20,
+    centeredSlides: true,
+    autoplay: { delay: 2500, disableOnInteraction: false },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+  });
+
+  // Swiper Game
+  new Swiper(".mySwiperGame", {
+    loop: true,
+    spaceBetween: 20,
+    centeredSlides: true,
+    autoplay: { delay: 3000, disableOnInteraction: false },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
   });
 </script>
 </body>
