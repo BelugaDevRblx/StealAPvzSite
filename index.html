@@ -15,24 +15,65 @@
   <!-- Swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
-
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Steal a PvZ - Official Site" />
   <meta property="og:description" content="Enter a Steal a Brainrot type universe but Plants Vs Zombies version" />
-  <meta property="og:image" content="images/plant1.png" />
+  <meta property="og:image" content="https://i.imgur.com/6Me9mxf_d.webp?maxwidth=760&fidelity=grand" />
   <meta property="og:url" content="https://stealapvzsite.up.railway.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Steal a PvZ" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Steal a PvZ - Official Site" />
   <meta name="twitter:description" content="Enter a Steal a Brainrot type universe but Plants Vs Zombies version" />
-  <meta name="twitter:image" content="images/plant1.png" />
+  <meta name="twitter:image" content="https://i.imgur.com/nAZBfup_d.webp?maxwidth=760&fidelity=grand" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/plant1.png" />
   <link rel="apple-touch-icon" href="images/plant1.png" />
+
+  <style>
+    body{background:radial-gradient(circle at top,#0f172a,#020617);overflow-x:hidden}
+    .neon-text{text-shadow:0 0 5px #00ffe1,0 0 10px #00ffe1,0 0 20px #00ffe1}
+    .glass{backdrop-filter:blur(10px);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+    .mouse-glow{position:fixed;top:0;left:0;width:200px;height:200px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,255,225,.3) 0%,transparent 70%);mix-blend-mode:screen;transform:translate(-50%,-50%);z-index:9999}
+    /* Masquer l’effet souris sur mobile/tactile */
+    @media (pointer:coarse){.mouse-glow{display:none}}
+
+    /* Swiper */
+    .swiper{padding-bottom:36px}
+    .swiper-slide{display:flex;justify-content:center;align-items:center}
+    /* Tailles RESPONSIVE des images */
+    .mySwiperPlants .swiper-slide img{width:clamp(140px,40vw,260px);height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+    .mySwiperGame .swiper-slide img{width:100%;max-width:clamp(260px,88vw,720px);height:auto;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+    /* Flèches masquées sur mobile, visibles dès md */
+    .swiper-button-next,.swiper-button-prev{color:#fff;transform:translateY(-24px)}
+    @media (max-width:767px){.swiper-button-next,.swiper-button-prev{display:none!important}}
+
+    /* Hero background */
+    #home{background:url("images/Sith.png") center/cover no-repeat;position:relative}
+    #home::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:1}
+    #home>*{position:relative;z-index:2}
+
+    /* Separator */
+    .section-separator{height:48px;background:rgba(15,23,42,.7);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+
+    /* Countdown */
+    .countdown-wrap{margin-top:14px}
+    .countdown-label{font-weight:700;letter-spacing:.1em;color:#a5f3fc;text-transform:uppercase}
+    .countdown{display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+    .cd-box{min-width:70px;padding:10px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 0 25px rgba(0,255,225,.08),0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(6px)}
+    .cd-num{font-size:28px;line-height:1;font-weight:800;text-shadow:0 0 12px rgba(0,255,225,.6)}
+    .cd-unit{font-size:11px;color:#cbd5e1;letter-spacing:.08em}
+    @media(min-width:768px){.cd-box{min-width:90px;padding:14px 12px}.cd-num{font-size:40px}}
+    .countdown-hint{margin-top:8px;font-size:12px;color:#94a3b8}
+    .release-now{font-size:34px;font-weight:900;color:#22d3ee;text-shadow:0 0 14px rgba(34,211,238,.8),0 0 30px rgba(0,255,225,.55);margin-top:10px;animation:pop .9s ease forwards}
+    @keyframes pop{0%{transform:scale(.85);opacity:.2}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+
+    /* Modal update logs */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.7);backdrop-filter:blur(6px);display:none;z-index:50}
+    .modal-panel{max-height:90vh;overflow:auto}
+    .badge{display:inline-block;padding:4px 10px;border-radius:9999px;background:#111827;color:#e5e7eb;font-size:12px;border:1px solid rgba(255,255,255,.08)}
+    .card{background:#0b1220;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden}
+  </style>
 </head>
 <body class="text-white font-sans">
 
@@ -61,125 +102,239 @@
   </button>
 </header>
 
-<!-- Mobile menu -->
+<!-- Mobile menu drawer -->
 <nav id="mobileMenu" class="fixed top-[56px] left-0 right-0 glass px-4 py-3 hidden z-40">
   <div class="flex flex-col gap-2 text-base">
-    <a href="#home" class="py-2 border-b border-white/10">Home</a>
+    <a href="#home"   class="py-2 border-b border-white/10">Home</a>
     <a href="#features" class="py-2 border-b border-white/10">Features</a>
-    <a href="#gallery" class="py-2 border-b border-white/10">Gallery</a>
-    <a href="#contact" class="py-2 border-b border-white/10">Contact</a>
+    <a href="#gallery"  class="py-2 border-b border-white/10">Gallery</a>
+    <a href="#contact"  class="py-2 border-b border-white/10">Contact</a>
     <button id="openLogsMobile" class="mt-1 px-3 py-2 rounded-lg bg-amber-400 text-black font-semibold">Update Logs</button>
   </div>
 </nav>
 
 <!-- Hero -->
-<section id="home" class="hero-section">
-  <h2 class="hero-title">Steal a Plants Vs Zombies. - Official Site</h2>
-  <p class="hero-subtitle">Steal a Plants vs zombie.</p>
+<section id="home" class="min-h-[88vh] pt-24 md:pt-28 pb-10 flex flex-col justify-center items-center text-center px-4" data-aos="fade-up">
+  <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 neon-text">
+    Steal a Plants Vs Zombies. - Official Site
+  </h2>
+  <p class="max-w-xl md:max-w-2xl text-sm sm:text-base text-gray-300 mb-5">
+    Steal a Plants vs zombie.
+  </p>
 
-  <!-- Play button -->
+  <!-- Play button (hidden until release) -->
   <a id="playBtn"
      href="https://www.roblox.com/fr/games/71388334059280/Steal-A-PvZ"
      target="_blank"
-     class="play-button"
+     class="bg-cyan-400 text-black px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg shadow-lg hover:bg-cyan-300 transition"
      style="display:none;">
     Play Now
   </a>
 
   <!-- Countdown -->
   <div class="countdown-wrap">
-    <div class="countdown-label">Game Release</div>
+    <div class="countdown-label text-xs sm:text-sm">Game Release</div>
     <div id="countdown" class="countdown">
       <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">DAYS</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-unit">HOURS</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-unit">MINS</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-unit">SECS</div></div>
     </div>
-    <div id="countdown-hint" class="countdown-hint"></div>
-    <div id="release-now" class="release-now" style="display:none;">RELEASE NOW! 🎉</div>
+    <div id="countdown-hint" class="countdown-hint text-center px-3"></div>
+    <div id="release-now" class="release-now text-center" style="display:none;">RELEASE NOW! 🎉</div>
   </div>
 </section>
 
+<!-- Separator -->
+<div class="section-separator"></div>
+
 <!-- Features -->
-<section id="features" class="features-section">
-  <div class="feature-card" data-aos="zoom-in">
-    🌱 <h3>Manage Your Plant</h3>
-    <p>Collect plants and avoid having them stolen.</p>
+<section id="features" class="py-12 md:py-20 max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+  <div class="glass p-5 rounded-xl hover:scale-[1.02] transition" data-aos="zoom-in">
+    🌱 <h3 class="text-lg md:text-xl font-semibold mb-2">Manage Your Plant</h3>
+    <p class="text-sm">Collect plants and avoid having them stolen.</p>
   </div>
-  <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
-    🥷 <h3>Steal Plants</h3>
-    <p>Steal your enemy's plants solo or with the help of your friends!</p>
+  <div class="glass p-5 rounded-xl hover:scale-[1.02] transition" data-aos="zoom-in" data-aos-delay="100">
+    🥷 <h3 class="text-lg md:text-xl font-semibold mb-2">Steal Plants</h3>
+    <p class="text-sm">Steal your enemy's plants solo or with the help of your friends!</p>
   </div>
-  <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
-    🔫 <h3>Gears</h3>
-    <p>Use your gears to expel the thieves from your base.</p>
+  <div class="glass p-5 rounded-xl hover:scale-[1.02] transition" data-aos="zoom-in" data-aos-delay="200">
+    🔫 <h3 class="text-lg md:text-xl font-semibold mb-2">Gears</h3>
+    <p class="text-sm">Use your gears to expel the thieves from your base, and be protected of course :></p>
   </div>
-  <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
-    💰 <h3>Rebirth</h3>
-    <p>Rebirth to upgrade your base and unlock new gears.</p>
+  <div class="glass p-5 rounded-xl hover:scale-[1.02] transition" data-aos="zoom-in" data-aos-delay="300">
+    💰 <h3 class="text-lg md:text-xl font-semibold mb-2">Rebirth</h3>
+    <p class="text-sm">Rebirth to upgrade your base and unlock new gears.</p>
   </div>
 </section>
 
 <!-- Gallery -->
-<section id="gallery" class="gallery-section">
-  <h2>Plants Gallery</h2>
-  <div class="swiper mySwiperPlants">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="images/plant1.png" alt="Plant 1"></div>
-      <div class="swiper-slide"><img src="images/plant2.png" alt="Plant 2"></div>
-      <div class="swiper-slide"><img src="images/plant3.png" alt="Plant 3"></div>
-      <div class="swiper-slide"><img src="images/plant4.png" alt="Plant 4"></div>
-      <div class="swiper-slide"><img src="images/plant5.png" alt="Plant 5"></div>
-      <div class="swiper-slide"><img src="images/plant6.png" alt="Plant 6"></div>
-      <div class="swiper-slide"><img src="images/plant7.png" alt="Plant 7"></div>
-      <div class="swiper-slide"><img src="images/plant8.png" alt="Plant 8"></div>
-      <div class="swiper-slide"><img src="images/plant9.png" alt="Plant 9"></div>
-      <div class="swiper-slide"><img src="images/plant10.png" alt="Plant 10"></div>
-      <div class="swiper-slide"><img src="images/plant11.png" alt="Plant 11"></div>
+<section id="gallery" class="py-12 md:py-20 bg-gray-900">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10">Plants Gallery</h2>
+    <div class="swiper mySwiperPlants">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/plant1.png" alt="Plant 1"></div>
+        <div class="swiper-slide"><img src="images/plant2.png" alt="Plant 2"></div>
+        <div class="swiper-slide"><img src="images/plant3.png" alt="Plant 3"></div>
+        <div class="swiper-slide"><img src="images/plant4.png" alt="Plant 4"></div>
+        <div class="swiper-slide"><img src="images/plant5.png" alt="Plant 5"></div>
+        <div class="swiper-slide"><img src="images/plant6.png" alt="Plant 6"></div>
+        <div class="swiper-slide"><img src="images/plant7.png" alt="Plant 7"></div>
+        <div class="swiper-slide"><img src="images/plant8.png" alt="Plant 8"></div>
+        <div class="swiper-slide"><img src="images/plant9.png" alt="Plant 9"></div>
+        <div class="swiper-slide"><img src="images/plant10.png" alt="Plant 10"></div>
+        <div class="swiper-slide"><img src="images/plant11.png" alt="Plant 11"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
-    <div class="swiper-pagination"></div>
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mt-10 md:mt-16 mb-6 md:mb-10">In-Game Screenshots</h2>
+    <div class="swiper mySwiperGame">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/screen1.png" alt="Screenshot 1"></div>
+        <div class="swiper-slide"><img src="images/screen2.png" alt="Screenshot 2"></div>
+        <div class="swiper-slide"><img src="images/screen3.png" alt="Screenshot 3"></div>
+        <div class="swiper-slide"><img src="images/screen4.png" alt="Screenshot 4"></div>
+        <div class="swiper-slide"><img src="images/screen5.png" alt="Screenshot 5"></div>
+        <div class="swiper-slide"><img src="images/screen6.png" alt="Screenshot 6"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
   </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="contact-section">
-  <h2>Join the Community</h2>
-  <p>Stay updated with the latest events and news.</p>
-  <a href="https://discord.gg/g4Cz9wKrSE" target="_blank" class="discord-button">Join Discord</a>
+<section id="contact" class="py-12 md:py-20 text-center px-4">
+  <h2 class="text-2xl md:text-3xl font-bold mb-4 neon-text">Join the Community</h2>
+  <p class="text-gray-300 mb-5 md:mb-6 text-sm md:text-base">Stay updated with the latest events and news.</p>
+  <a href="https://discord.gg/g4Cz9wKrSE" target="_blank" class="bg-cyan-400 text-black px-5 md:px-6 py-3 rounded-full font-bold hover:bg-cyan-300 transition inline-block">
+    Join Discord
+  </a>
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-  © 2025 Steal a PvZ | Game Made with ❤️ by Steal a Pvz Studio.
+<footer class="py-6 text-center text-xs md:text-sm glass">
+  © 2025 Steal a PvZ | Game Made with ❤️ by Steal a Pvz Studio and Site made by @v222.v333 on dc.
 </footer>
 
 <!-- Update Logs Modal -->
 <div id="logsModal" class="modal-backdrop">
-  <div class="modal-panel">
-    <div class="modal-header">
-      <h3>Update Logs</h3>
-      <button id="closeLogs">Close</button>
-    </div>
-    <div class="modal-content">
-      <article>
-        <img src="images/screen1.png" alt="update cover">
-        <div>
-          <span class="badge">Event</span>
-          <h4>???</h4>
-          <p>15 August, 2025</p>
-          <ul>
-            <li>???</li>
-            <li>???</li>
-            <li>???</li>
-          </ul>
-        </div>
-      </article>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <div class="card modal-panel p-4 md:p-6">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-xl md:text-2xl font-extrabold">Update Logs</h3>
+        <button id="closeLogs" class="rounded-full px-3 py-1 bg-slate-800 hover:bg-slate-700 border border-white/10">Close</button>
+      </div>
+
+      <div class="mt-5 md:mt-6 space-y-8">
+        <!-- Log Item -->
+        <article class="grid md:grid-cols-3 gap-4 md:gap-6 items-start">
+          <div class="md:col-span-2 card">
+            <img src="images/screen1.png" alt="update cover" class="w-full object-cover">
+          </div>
+          <div>
+            <div class="badge mb-2">Event</div>
+            <div class="block text-2xl md:text-3xl font-extrabold text-amber-300 underline decoration-2 underline-offset-4">???</div>
+            <div class="text-xs md:text-sm text-slate-400 mt-2">15 August, 2025</div>
+
+            <h4 class="text-lg md:text-2xl font-bold mt-4 md:mt-6 text-amber-300">Featuring</h4>
+            <ul class="mt-2 space-y-1 text-slate-200 text-sm">
+              <li>???</li>
+              <li>???</li>
+              <li>???</li>
+            </ul>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="script.js"></script>
+<script>
+  // Mouse glow (désactivé par CSS sur tactile)
+  const glow=document.getElementById("mouseGlow");
+  document.addEventListener("mousemove",e=>{glow.style.left=`${e.clientX}px`;glow.style.top=`${e.clientY}px`});
+
+  // AOS
+  AOS.init({duration:1000,once:true});
+
+  // Mobile menu
+  const menuBtn=document.getElementById('menuBtn');
+  const mobileMenu=document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click',()=>{mobileMenu.classList.toggle('hidden')});
+  document.addEventListener('click',(e)=>{if(!mobileMenu.contains(e.target)&&e.target!==menuBtn&&window.innerWidth<768){mobileMenu.classList.add('hidden')}});
+
+  // Update Logs modal
+  const logsModal=document.getElementById('logsModal');
+  const openLogs=document.getElementById('openLogs');
+  const openLogsMobile=document.getElementById('openLogsMobile');
+  const closeLogs=document.getElementById('closeLogs');
+  function openModal(){logsModal.style.display='block';document.body.style.overflow='hidden'}
+  function closeModal(){logsModal.style.display='none';document.body.style.overflow=''}
+  if(openLogs) openLogs.addEventListener('click',openModal);
+  if(openLogsMobile) openLogsMobile.addEventListener('click',openModal);
+  closeLogs.addEventListener('click',closeModal);
+  logsModal.addEventListener('click',e=>{if(e.target===logsModal) closeModal()});
+
+  // Swipers (pagination click mobile, flèches seulement desktop)
+  new Swiper(".mySwiperPlants",{
+    loop:true,spaceBetween:16,centeredSlides:true,
+    autoplay:{delay:2500,disableOnInteraction:false},
+    pagination:{el:".mySwiperPlants .swiper-pagination",clickable:true},
+    navigation:{nextEl:".mySwiperPlants .swiper-button-next",prevEl:".mySwiperPlants .swiper-button-prev"},
+  });
+  new Swiper(".mySwiperGame",{
+    loop:true,spaceBetween:16,centeredSlides:true,
+    autoplay:{delay:3000,disableOnInteraction:false},
+    pagination:{el:".mySwiperGame .swiper-pagination",clickable:true},
+    navigation:{nextEl:".mySwiperGame .swiper-button-next",prevEl:".mySwiperGame .swiper-button-prev"},
+  });
+
+  // ===== Countdown (Release 15/08/2025 19:00 Europe/Paris) =====
+  const targetParis=new Date('2025-08-15T19:00:00+02:00').getTime();
+  const cdDays=document.getElementById('cd-days');
+  const cdHours=document.getElementById('cd-hours');
+  const cdMins=document.getElementById('cd-mins');
+  const cdSecs=document.getElementById('cd-secs');
+  const cdWrap=document.getElementById('countdown');
+  const cdHint=document.getElementById('countdown-hint');
+  const relNow=document.getElementById('release-now');
+  const playBtn=document.getElementById('playBtn');
+
+  const parisFmt=new Intl.DateTimeFormat('en-GB',{dateStyle:'full',timeStyle:'short',timeZone:'Europe/Paris'});
+  const localFmt=new Intl.DateTimeFormat(undefined,{dateStyle:'full',timeStyle:'short'});
+  cdHint.textContent=`Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)}`;
+
+  function showRelease(){
+    cdWrap.style.display='none';
+    cdHint.style.display='none';
+    relNow.style.display='block';
+    playBtn.style.display='inline-block';
+    playBtn.classList.add('reveal-pop');
+  }
+  function updateCountdown(){
+    const diff=targetParis-Date.now();
+    if(diff<=0){showRelease();clearInterval(timer);return}
+    const sec=Math.floor(diff/1000);
+    const d=Math.floor(sec/86400);
+    const h=Math.floor((sec%86400)/3600);
+    const m=Math.floor((sec%3600)/60);
+    const s=sec%60;
+    cdDays.textContent=String(d);
+    cdHours.textContent=h.toString().padStart(2,'0');
+    cdMins.textContent=m.toString().padStart(2,'0');
+    cdSecs.textContent=s.toString().padStart(2,'0');
+  }
+  updateCountdown();
+  const timer=setInterval(updateCountdown,1000);
+  if(Date.now()>=targetParis) showRelease();
+</script>
 </body>
 </html>
