@@ -35,11 +35,14 @@
     /* Mouse glow effect */
     .mouse-glow {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0; 
+      left: 0;
+      width: 200px; /* taille du halo */
+      height: 200px;
+      border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(0,255,225,0.2) 0%, transparent 60%);
-      mix-blend-mode: screen;
+      background: radial-gradient(circle, rgba(0,255,225,0.3) 0%, transparent 70%);
+          mix-blend-mode: screen;
       transform: translate(-50%, -50%);
       z-index: 9999;
     }
@@ -116,9 +119,10 @@
 <script>
   // Mouse glow effect
   const glow = document.getElementById("mouseGlow");
-  document.addEventListener("mousemove", (e) => {
-    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-  });
+    document.addEventListener("mousemove", (e) => {
+      glow.style.left = `${e.clientX}px`;
+      glow.style.top = `${e.clientY}px`;
+    });
 
   // Init AOS animations
   AOS.init({
