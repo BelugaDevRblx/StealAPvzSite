@@ -14,134 +14,59 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <!-- Remplace YOUR_SITE_URL et YOUR_IMAGE_URL par des URL complètes (https://...) -->
+  <!-- Open Graph / Twitter (Discord preview) -->
   <meta property="og:title" content="Steal a PvZ - Official Site" />
   <meta property="og:description" content="Enter a Steal a Brainrot type universe but Plant Vs Zombie version" />
   <meta property="og:image" content="https://i.imgur.com/6Me9mxf_d.webp?maxwidth=760&fidelity=grand" />
   <meta property="og:url" content="https://stealapvzsite.up.railway.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Steal a PvZ" />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Steal a PvZ - Official Site" />
   <meta name="twitter:description" content="Enter a Steal a Brainrot type universe but Plant Vs Zombie version" />
   <meta name="twitter:image" content="https://i.imgur.com/nAZBfup_d.webp?maxwidth=760&fidelity=grand" />
 
-  <!-- (Optionnel) utiliser plant11 aussi comme icône du site -->
+  <!-- (Optionnel) favicon -->
   <link rel="icon" type="image/png" href="YOUR_IMAGE_URL" />
   <link rel="apple-touch-icon" href="YOUR_IMAGE_URL" />
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
   <!-- Custom Styles -->
   <style>
-    body {
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      overflow-x: hidden;
-    }
-    .neon-text {
-      text-shadow: 0 0 5px #00ffe1, 0 0 10px #00ffe1, 0 0 20px #00ffe1;
-    }
-    .glass {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .mouse-glow {
-      position: fixed;
-      top: 0; left: 0;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(0,255,225,0.3) 0%, transparent 70%);
-      mix-blend-mode: screen;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-    }
-    /* Swiper styling */
+    body { background: radial-gradient(circle at top, #0f172a, #020617); overflow-x: hidden; }
+    .neon-text { text-shadow: 0 0 5px #00ffe1, 0 0 10px #00ffe1, 0 0 20px #00ffe1; }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+    .mouse-glow { position: fixed; top: 0; left: 0; width: 200px; height: 200px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(0,255,225,0.3) 0%, transparent 70%); mix-blend-mode: screen; transform: translate(-50%, -50%); z-index: 9999; }
+
+    /* Swiper */
     .swiper { padding-bottom: 50px; }
     .swiper-slide { display: flex; justify-content: center; align-items: center; }
-    /* Plants smaller */
-    .mySwiperPlants .swiper-slide img {
-      width: 250px; height: auto;
-      border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    /* In-game larger */
-    .mySwiperGame .swiper-slide img {
-      width: 700px; height: auto; /* tu peux monter à 420/480 si tu veux plus grand */
-      border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .swiper-button-next, .swiper-button-prev {
-      color: white;
-      transform: translateY(-30px); /* rapproche des images */
-    }
+    .mySwiperPlants .swiper-slide img { width: 250px; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .mySwiperGame .swiper-slide img { width: 700px; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .swiper-button-next, .swiper-button-prev { color: white; transform: translateY(-30px); }
 
     /* Hero background */
     #home { background: url("images/Sith.png") center/cover no-repeat; position: relative; }
-    #home::before {
-      content: ""; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.5); z-index: 1;
-    }
+    #home::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 1; }
     #home > * { position: relative; z-index: 2; }
 
-    /* Separator blur between home and features */
-    .section-separator {
-      height: 60px; background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(14px);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
+    /* Separator */
+    .section-separator { height: 60px; background: rgba(15,23,42,0.7); backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
 
-    /* Countdown styles */
-    .countdown-wrap {
-      margin-top: 18px;
-    }
-    .countdown-label {
-      font-weight: 700; letter-spacing: .1em;
-      color: #a5f3fc; text-transform: uppercase;
-    }
-    .countdown {
-      display: flex; gap: 12px; justify-content: center; margin-top: 10px;
-    }
-    .cd-box {
-      min-width: 90px;
-      padding: 14px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: inset 0 0 25px rgba(0,255,225,0.08), 0 10px 30px rgba(0,0,0,0.35);
-      backdrop-filter: blur(6px);
-    }
-    .cd-num {
-      font-size: 40px; line-height: 1; font-weight: 800;
-      text-shadow: 0 0 12px rgba(0,255,225,0.6);
-    }
-    .cd-unit {
-      font-size: 12px; color: #cbd5e1; letter-spacing: .08em;
-    }
-    .countdown-hint {
-      margin-top: 10px; font-size: 13px; color: #94a3b8;
-    }
-    .pulse {
-      animation: pulseGlow 1.8s ease-in-out infinite;
-    }
-    @keyframes pulseGlow {
-      0%,100% { box-shadow: inset 0 0 25px rgba(0,255,225,0.10), 0 0 20px rgba(0,255,225,0.15); }
-      50%     { box-shadow: inset 0 0 35px rgba(0,255,225,0.25), 0 0 35px rgba(0,255,225,0.35); }
-    }
-    .release-now {
-      font-size: 44px; font-weight: 900;
-      color: #22d3ee;
-      text-shadow: 0 0 14px rgba(34,211,238,0.8), 0 0 30px rgba(0,255,225,0.55);
-      margin-top: 12px;
-      animation: pop 900ms ease forwards;
-    }
-    @keyframes pop {
-      0% { transform: scale(.85); opacity: .2; }
-      60% { transform: scale(1.08); opacity: 1; }
-      100% { transform: scale(1); }
-    }
+    /* Countdown */
+    .countdown-wrap { margin-top: 18px; }
+    .countdown-label { font-weight: 700; letter-spacing: .1em; color: #a5f3fc; text-transform: uppercase; }
+    .countdown { display: flex; gap: 12px; justify-content: center; margin-top: 10px; }
+    .cd-box { min-width: 90px; padding: 14px 12px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); box-shadow: inset 0 0 25px rgba(0,255,225,0.08), 0 10px 30px rgba(0,0,0,0.35); backdrop-filter: blur(6px); }
+    .cd-num { font-size: 40px; line-height: 1; font-weight: 800; text-shadow: 0 0 12px rgba(0,255,225,0.6); }
+    .cd-unit { font-size: 12px; color: #cbd5e1; letter-spacing: .08em; }
+    .countdown-hint { margin-top: 10px; font-size: 13px; color: #94a3b8; }
+    .pulse { animation: pulseGlow 1.8s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%,100% { box-shadow: inset 0 0 25px rgba(0,255,225,0.10), 0 0 20px rgba(0,255,225,0.15); } 50% { box-shadow: inset 0 0 35px rgba(0,255,225,0.25), 0 0 35px rgba(0,255,225,0.35); } }
+    .release-now { font-size: 44px; font-weight: 900; color: #22d3ee; text-shadow: 0 0 14px rgba(34,211,238,0.8), 0 0 30px rgba(0,255,225,0.55); margin-top: 12px; animation: pop 900ms ease forwards; }
+    @keyframes pop { 0% { transform: scale(.85); opacity: .2; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+
+    /* Reveal animation for the Play button */
+    .reveal-pop { animation: pop 800ms ease forwards; }
   </style>
 </head>
 <body class="text-white font-sans">
@@ -164,9 +89,14 @@
 <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-6" data-aos="fade-up">
   <h2 class="text-5xl md:text-6xl font-bold mb-4 neon-text">Steal a Plant Vs Zombies. - Official Site</h2>
   <p class="max-w-2xl text-lg text-gray-300 mb-8">
-    Enter a Steal a Brainrot type universe but Plant Vs Zombie version.
+    Steal a Plants vs zombie.
   </p>
-  <a href="https://www.roblox.com/fr/games/71388334059280/Steal-A-PvZ" target="_blank" class="bg-cyan-400 text-black px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-cyan-300 transition">
+
+  <!-- Play button: hidden until release -->
+  <a id="playBtn" href="https://www.roblox.com/fr/games/71388334059280/Steal-A-PvZ"
+     target="_blank"
+     class="bg-cyan-400 text-black px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-cyan-300 transition"
+     style="display:none;">
     Play Now
   </a>
 
@@ -279,23 +209,16 @@
     loop: true, spaceBetween: 20, centeredSlides: true,
     autoplay: { delay: 2500, disableOnInteraction: false },
     pagination: { el: ".mySwiperPlants .swiper-pagination", clickable: true },
-    navigation: {
-      nextEl: ".mySwiperPlants .swiper-button-next",
-      prevEl: ".mySwiperPlants .swiper-button-prev",
-    },
+    navigation: { nextEl: ".mySwiperPlants .swiper-button-next", prevEl: ".mySwiperPlants .swiper-button-prev" },
   });
   new Swiper(".mySwiperGame", {
     loop: true, spaceBetween: 20, centeredSlides: true,
     autoplay: { delay: 3000, disableOnInteraction: false },
     pagination: { el: ".mySwiperGame .swiper-pagination", clickable: true },
-    navigation: {
-      nextEl: ".mySwiperGame .swiper-button-next",
-      prevEl: ".mySwiperGame .swiper-button-prev",
-    },
+    navigation: { nextEl: ".mySwiperGame .swiper-button-next", prevEl: ".mySwiperGame .swiper-button-prev" },
   });
 
   // ===== Countdown (Release 15/08/2025 19:00 Europe/Paris) =====
-  // Paris in August is UTC+02:00 (CEST). We encode it explicitly to be unambiguous.
   const targetParis = new Date('2025-08-15T19:00:00+02:00').getTime();
 
   const cdDays  = document.getElementById('cd-days');
@@ -305,25 +228,29 @@
   const cdWrap  = document.getElementById('countdown');
   const cdHint  = document.getElementById('countdown-hint');
   const relNow  = document.getElementById('release-now');
+  const playBtn = document.getElementById('playBtn');
 
   // Show both Paris time & user's local equivalent
-  const parisFmt = new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris'
-  });
-  const localFmt = new Intl.DateTimeFormat(undefined, {
-    dateStyle: 'full', timeStyle: 'short'
-  });
+  const parisFmt = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' });
+  const localFmt = new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' });
   cdHint.textContent = `Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)}`;
+
+  function showRelease() {
+    cdWrap.style.display = 'none';
+    cdHint.style.display = 'none';
+    relNow.style.display = 'block';
+    // Reveal Play button with animation
+    playBtn.style.display = 'inline-block';
+    playBtn.classList.add('reveal-pop');
+  }
 
   function updateCountdown() {
     const now = Date.now();
     let diff = targetParis - now;
 
     if (diff <= 0) {
-      // Release!
-      cdWrap.style.display = 'none';
-      cdHint.style.display = 'none';
-      relNow.style.display = 'block';
+      showRelease();
+      clearInterval(timer);
       return;
     }
     const sec = Math.floor(diff / 1000);
@@ -337,8 +264,13 @@
     cdMins.textContent  = m.toString().padStart(2,'0');
     cdSecs.textContent  = s.toString().padStart(2,'0');
   }
+
+  // First render
   updateCountdown();
   const timer = setInterval(updateCountdown, 1000);
+
+  // If someone opens the page after release, ensure button shows right away
+  if (Date.now() >= targetParis) showRelease();
 </script>
 </body>
 </html>
