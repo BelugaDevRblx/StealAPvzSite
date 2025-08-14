@@ -1,53 +1,130 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Steal a PvZ</title>
+  <title>Steal a PvZ - Futuristic Edition</title>
+  
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    /* Background */
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      overflow-x: hidden;
+    }
+
+    /* Neon effect */
+    .neon-text {
+      text-shadow: 0 0 5px #00ffe1, 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+    }
+
+    /* Glass effect */
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Mouse glow effect */
+    .mouse-glow {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(0,255,225,0.2) 0%, transparent 60%);
+      mix-blend-mode: screen;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="text-white font-sans">
 
-  <!-- Hero -->
-  <header class="text-center py-16 bg-gradient-to-b from-green-600 to-green-800">
-    <h1 class="text-5xl font-bold mb-4">Steal a PvZ</h1>
-    <p class="text-lg max-w-xl mx-auto">Construis ta base ultime, vole les ressources de tes rivaux et deviens le maître du jeu !</p>
-    <a href="#jouer" class="mt-6 inline-block bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">Jouer maintenant</a>
-  </header>
+<!-- Glow Effect -->
+<div class="mouse-glow" id="mouseGlow"></div>
 
-  <!-- Fonctionnalités -->
-  <section class="py-16 max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-10">Fonctionnalités</h2>
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition">
-        🌱 <h3 class="text-xl font-semibold mb-2">Acheter & Gérer</h3>
-        <p>Acquiers et améliore tes plantes et zombies pour dominer le jeu.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition">
-        🥷 <h3 class="text-xl font-semibold mb-2">Voler des ressources</h3>
-        <p>Attaque d’autres joueurs pour voler leurs ressources stratégiques.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition">
-        💰 <h3 class="text-xl font-semibold mb-2">Améliorer & Rebirth</h3>
-        <p>Fais évoluer ta base et débloque de nouvelles compétences.</p>
-      </div>
-    </div>
-  </section>
+<!-- Header -->
+<header class="fixed top-0 w-full glass p-4 flex justify-between items-center z-50">
+  <h1 class="text-2xl font-bold neon-text">Steal a PvZ</h1>
+  <nav class="flex gap-6">
+    <a href="#home" class="hover:text-cyan-400 transition">Home</a>
+    <a href="#features" class="hover:text-cyan-400 transition">Features</a>
+    <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
+    <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+  </nav>
+</header>
 
-  <!-- Galerie -->
-  <section class="py-16 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-10">Galerie</h2>
-    <div class="flex gap-4 justify-center flex-wrap">
-      <img src="images/image1.png" alt="Aperçu 1" class="w-64 rounded-lg shadow-lg hover:scale-105 transition">
-      <img src="images/image2.png" alt="Aperçu 2" class="w-64 rounded-lg shadow-lg hover:scale-105 transition">
-      <img src="images/image3.png" alt="Aperçu 3" class="w-64 rounded-lg shadow-lg hover:scale-105 transition">
-    </div>
-  </section>
+<!-- Hero Section -->
+<section id="home" class="h-screen flex flex-col justify-center items-center text-center px-6" data-aos="fade-up">
+  <h2 class="text-5xl md:text-6xl font-bold mb-4 neon-text">Build, Steal & Conquer</h2>
+  <p class="max-w-2xl text-lg text-gray-300 mb-8">
+    Enter the ultimate battle between plants and zombies in a futuristic strategy world.
+  </p>
+  <a href="#play" class="bg-cyan-400 text-black px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-cyan-300 transition">
+    Play Now
+  </a>
+</section>
 
-  <!-- Footer -->
-  <footer class="py-6 text-center text-sm bg-gray-950">
-    © 2025 Steal a PvZ | Fait avec ❤️ par ton équipe
-  </footer>
+<!-- Features Section -->
+<section id="features" class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+  <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in">
+    🌱 <h3 class="text-xl font-semibold mb-2">Manage Your Army</h3>
+    <p>Grow, upgrade, and customize your plants and zombies to fit your strategy.</p>
+  </div>
+  <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
+    🥷 <h3 class="text-xl font-semibold mb-2">Steal Resources</h3>
+    <p>Plan stealthy raids to take resources from rival players.</p>
+  </div>
+  <div class="glass p-6 rounded-xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
+    💰 <h3 class="text-xl font-semibold mb-2">Upgrade & Rebirth</h3>
+    <p>Unlock advanced abilities and rebuild stronger every time.</p>
+  </div>
+</section>
 
+<!-- Gallery Section -->
+<section id="gallery" class="py-20 bg-gray-900">
+  <h2 class="text-3xl font-bold text-center mb-10">Game Gallery</h2>
+  <div class="flex flex-wrap justify-center gap-6 px-6">
+    <img src="images/img1.png" alt="Screenshot 1" class="w-72 rounded-lg hover:scale-110 transition" data-aos="fade-up">
+    <img src="images/img2.png" alt="Screenshot 2" class="w-72 rounded-lg hover:scale-110 transition" data-aos="fade-up" data-aos-delay="100">
+    <img src="images/img3.png" alt="Screenshot 3" class="w-72 rounded-lg hover:scale-110 transition" data-aos="fade-up" data-aos-delay="200">
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 text-center px-6">
+  <h2 class="text-3xl font-bold mb-6 neon-text">Join the Community</h2>
+  <p class="text-gray-300 mb-6">Stay updated with the latest events and news.</p>
+  <a href="https://discord.gg/" target="_blank" class="bg-cyan-400 text-black px-6 py-3 rounded-full font-bold hover:bg-cyan-300 transition">
+    Join Discord
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="py-6 text-center text-sm glass">
+  © 2025 Steal a PvZ | Made with ❤️ by your team
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Mouse glow effect
+  const glow = document.getElementById("mouseGlow");
+  document.addEventListener("mousemove", (e) => {
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  });
+
+  // Init AOS animations
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
 </body>
 </html>
