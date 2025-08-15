@@ -298,43 +298,62 @@
   });
 
   // ===== Countdown (Release 15/08/2025 19:00 Europe/Paris) =====
-  const targetParis=new Date('2025-08-15T19:00:00+02:00').getTime();
-  const cdDays=document.getElementById('cd-days');
-  const cdHours=document.getElementById('cd-hours');
-  const cdMins=document.getElementById('cd-mins');
-  const cdSecs=document.getElementById('cd-secs');
-  const cdWrap=document.getElementById('countdown');
-  const cdHint=document.getElementById('countdown-hint');
-  const relNow=document.getElementById('release-now');
-  const playBtn=document.getElementById('playBtn');
+const targetParis = new Date('2025-08-15T19:00:00+02:00').getTime();
+const cdDays = document.getElementById('cd-days');
+const cdHours = document.getElementById('cd-hours');
+const cdMins = document.getElementById('cd-mins');
+const cdSecs = document.getElementById('cd-secs');
+const cdWrap = document.getElementById('countdown');
+const cdHint = document.getElementById('countdown-hint');
+const relNow = document.getElementById('release-now');
+const playBtn = document.getElementById('playBtn');
 
-  const parisFmt=new Intl.DateTimeFormat('en-GB',{dateStyle:'full',timeStyle:'short',timeZone:'Europe/Paris'});
-  const localFmt=new Intl.DateTimeFormat(undefined,{dateStyle:'full',timeStyle:'short'});
-  cdHint.textContent=`Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)}`;
+// Détecte automatiquement le fuseau local
+const localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  function showRelease(){
-    cdWrap.style.display='none';
-    cdHint.style.display='none';
-    relNow.style.display='block';
-    playBtn.style.display='inline-block';
-    playBtn.classList.add('reveal-pop');
+const parisFmt = new Intl.DateTimeFormat('en-GB', {
+  dateStyle: 'full',
+  timeStyle: 'short',
+  timeZone: 'Europe/Paris'
+});
+const localFmt = new Intl.DateTimeFormat(undefined, {
+  dateStyle: 'full',
+  timeStyle: 'short',
+  timeZone: localTZ
+});
+
+cdHint.textContent = `Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)} (${localTZ})`;
+
+function showRelease() {
+  cdWrap.style.display = 'none';
+  cdHint.style.display = 'none';
+  relNow.style.display = 'block';
+  playBtn.style.display = 'inline-block';
+  playBtn.classList.add('reveal-pop');
+}
+
+function updateCountdown() {
+  const diff = targetParis - Date.now();
+  if (diff <= 0) {
+    showRelease();
+    clearInterval(timer);
+    return;
   }
-  function updateCountdown(){
-    const diff=targetParis-Date.now();
-    if(diff<=0){showRelease();clearInterval(timer);return}
-    const sec=Math.floor(diff/1000);
-    const d=Math.floor(sec/86400);
-    const h=Math.floor((sec%86400)/3600);
-    const m=Math.floor((sec%3600)/60);
-    const s=sec%60;
-    cdDays.textContent=String(d);
-    cdHours.textContent=h.toString().padStart(2,'0');
-    cdMins.textContent=m.toString().padStart(2,'0');
-    cdSecs.textContent=s.toString().padStart(2,'0');
-  }
-  updateCountdown();
-  const timer=setInterval(updateCountdown,1000);
-  if(Date.now()>=targetParis) showRelease();
+  const sec = Math.floor(diff / 1000);
+  const d = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  cdDays.textContent = String(d);
+  cdHours.textContent = h.toString().padStart(2, '0');
+  cdMins.textContent = m.toString().padStart(2, '0');
+  cdSecs.textContent = s.toString().padStart(2, '0');
+}
+
+updateCountdown();
+const timer = setInterval(updateCountdown, 1000);
+if (Date.now() >= targetParis) showRelease();
+
 </script>
 </body>
 </html>
