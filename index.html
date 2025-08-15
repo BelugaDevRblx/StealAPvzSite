@@ -296,64 +296,100 @@
     pagination:{el:".mySwiperGame .swiper-pagination",clickable:true},
     navigation:{nextEl:".mySwiperGame .swiper-button-next",prevEl:".mySwiperGame .swiper-button-prev"},
   });
+// ===== Release target: 15 Aug 2025 19:00 Paris =====
+// 19:00 à Paris (CEST = UTC+02) => 17:00 UTC fixe pour éviter les bugs d'heure d'été.
+const TARGET_UTC_ISO = '2025-08-15T17:00:00Z';
+const targetUTC = Date.parse(TARGET_UTC_ISO);
 
-  // ===== Countdown (Release 15/08/2025 19:00 Europe/Paris) =====
-const targetParis = new Date('2025-08-15T19:00:00+02:00').getTime();
-const cdDays = document.getElementById('cd-days');
+// DOM
+const cdDays  = document.getElementById('cd-days');
 const cdHours = document.getElementById('cd-hours');
-const cdMins = document.getElementById('cd-mins');
-const cdSecs = document.getElementById('cd-secs');
-const cdWrap = document.getElementById('countdown');
-const cdHint = document.getElementById('countdown-hint');
-const relNow = document.getElementById('release-now');
+const cdMins  = document.getElementById('cd-mins');
+const cdSecs  = document.getElementById('cd-secs');
+const cdWrap  = document.getElementById('countdown');
+const cdHint  = document.getElementById('countdown-hint');
+const relNow  = document.getElementById('release-now');
 const playBtn = document.getElementById('playBtn');
 
-// Détecte automatiquement le fuseau local
-const localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
+// Formatters
+const parisTZ = 'Europe/Paris';
 const parisFmt = new Intl.DateTimeFormat('en-GB', {
   dateStyle: 'full',
   timeStyle: 'short',
-  timeZone: 'Europe/Paris'
-});
-const localFmt = new Intl.DateTimeFormat(undefined, {
-  dateStyle: 'full',
-  timeStyle: 'short',
-  timeZone: localTZ
+  timeZone: parisTZ
 });
 
-cdHint.textContent = `Releases on ${parisFmt.format(targetParis)} (Paris) • Your local time: ${localFmt.format(targetParis)} (${localTZ})`;
+// Détection du fuseau basé sur l'IP (avec fallback navigateur)
+async function resolveLocalTimeZone() {
+  // 1) Essai ipapi.co
+  try {
+    const r = await fetch('https://ipapi.co/json/');
+    if (r.ok) {
+      const d = await r.json();
+      if (d && d.timezone) return { tz: d.timezone, label: d.country_name || d.region || d.timezone };
+    }
+  } catch(e) {}
 
+  // 2) Essai ipwho.is
+  try {
+    const r = await fetch('https://ipwho.is/');
+    if (r.ok) {
+      const d = await r.json();
+      if (d && d.success && d.timezone && d.timezone.id) {
+        return { tz: d.timezone.id, label: d.country || d.timezone.id };
+      }
+    }
+  } catch(e) {}
+
+  // 3) Fallback: fuseau du navigateur
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  return { tz, label: tz };
+}
+
+// Affichage du hint (Paris + Local IP)
+async function renderHint() {
+  const local = await resolveLocalTimeZone();
+  const localFmt = new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'full',
+    timeStyle: 'short',
+    timeZone: local.tz
+  });
+
+  // On formate avec une Date (et pas un nombre) pour éviter les ambiguïtés de certains navigateurs
+  const targetDate = new Date(targetUTC);
+  cdHint.textContent = `Releases on ${parisFmt.format(targetDate)} (Paris) • Your local time: ${localFmt.format(targetDate)} (${local.label})`;
+}
+renderHint();
+
+// Affichage / logique du countdown
 function showRelease() {
-  cdWrap.style.display = 'none';
-  cdHint.style.display = 'none';
-  relNow.style.display = 'block';
-  playBtn.style.display = 'inline-block';
-  playBtn.classList.add('reveal-pop');
+  if (cdWrap) cdWrap.style.display = 'none';
+  if (cdHint) cdHint.style.display = 'none';
+  if (relNow) relNow.style.display = 'block';
+  if (playBtn) {
+    playBtn.style.display = 'inline-block';
+    playBtn.classList.add('reveal-pop');
+  }
 }
 
 function updateCountdown() {
-  const diff = targetParis - Date.now();
-  if (diff <= 0) {
-    showRelease();
-    clearInterval(timer);
-    return;
-  }
+  const diff = targetUTC - Date.now();
+  if (diff <= 0) { showRelease(); clearInterval(timer); return; }
+
   const sec = Math.floor(diff / 1000);
   const d = Math.floor(sec / 86400);
   const h = Math.floor((sec % 86400) / 3600);
   const m = Math.floor((sec % 3600) / 60);
   const s = sec % 60;
-  cdDays.textContent = String(d);
-  cdHours.textContent = h.toString().padStart(2, '0');
-  cdMins.textContent = m.toString().padStart(2, '0');
-  cdSecs.textContent = s.toString().padStart(2, '0');
-}
 
+  if (cdDays)  cdDays.textContent  = String(d);
+  if (cdHours) cdHours.textContent = h.toString().padStart(2,'0');
+  if (cdMins)  cdMins.textContent  = m.toString().padStart(2,'0');
+  if (cdSecs)  cdSecs.textContent  = s.toString().padStart(2,'0');
+}
 updateCountdown();
 const timer = setInterval(updateCountdown, 1000);
-if (Date.now() >= targetParis) showRelease();
-
+if (Date.now() >= targetUTC) showRelease();
 </script>
 </body>
 </html>
